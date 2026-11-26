@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "skills": {
+    "create-readme": {
+      "source": "github/awesome-copilot",
+      "commit": "93fc8b9ee3ef56b9b5e7261e6ce92d314cb2c1cf",
+      "sourceType": "github",
+      "skillPath": "skills/create-readme/SKILL.md",
+      "computedHash": "59e7a20cc6e183f31c0161a619b66f96d05656378c1cef886522b6845d33c953"
+    },
+    "design-mobile-apps": {
+      "source": "designed-by-ai/skills",
+      "commit": "03c20aec6dcedb5fabfb03dc37982eb52ef19ed6",
+      "sourceType": "github",
+      "skillPath": "skills/design-mobile-apps/SKILL.md",
+      "computedHash": "eec6dae3f26f8f154fe190a53387f0b2eab39aa120932d5c33af7f3284f04b10"
+    },
+    "favicon-generator": {
+      "source": "kostja94/marketing-skills",
+      "commit": "ac823a127782355339f21aef6c87f1ccff751c84",
+      "sourceType": "github",
+      "skillPath": "skills/components/branding/favicon/SKILL.md",
+      "computedHash": "fb32c0c777d07267463ae07eca10fdfe8c24e97ea9c5887a322dd6bcc5b5fd4d"
+    },
+    "game-ui-design": {
+      "source": "omer-metin/skills-for-antigravity",
+      "commit": "e8dcf4e8737921a10088bd5c9eb65e81f74c051f",
+      "sourceType": "github",
+      "skillPath": "skills/game-ui-design/SKILL.md",
+      "computedHash": "6c2293a16bd99d821145d438665215970fa6c6fd75f578b4990f8237e0f497bb"
+    }
+  }
+}

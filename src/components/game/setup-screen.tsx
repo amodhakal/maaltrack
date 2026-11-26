@@ -37,7 +37,7 @@ function SetupScreen({
   }
 
   return (
-    <main className="mx-auto flex min-h-svh w-full max-w-xl flex-col pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
+    <main className="mx-auto flex min-h-svh w-full max-w-xl flex-col pt-[calc(1.5rem+env(safe-area-inset-top))] pb-[calc(6rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
       <header className="flex items-baseline justify-between gap-3">
         <h1 className="font-serif text-2xl font-semibold tracking-tight">
           MaalTrack
