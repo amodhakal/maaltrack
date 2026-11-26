@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="MaalTrack">
+  <rect width="512" height="512" fill="#12100e" />
+  <rect x="132" y="96" width="248" height="320" fill="#f4ead9" />
+  <path d="M256 192 320 256 256 320 192 256Z" fill="#d8503a" />
+  <rect x="180" y="348" width="152" height="20" fill="#e9a63c" />
+</svg>
