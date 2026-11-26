@@ -24,7 +24,7 @@ function InstallPrompt() {
             </p>
             <Button
               variant="ghost"
-              size="icon-xs"
+              size="icon-sm"
               aria-label="Dismiss install prompt"
               onClick={dismiss}
             >

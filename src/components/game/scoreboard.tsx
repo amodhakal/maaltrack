@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
+import type { ReactNode } from 'react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,9 +14,11 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { formatScore } from '@/lib/scoring'
 import type { Player, Round } from '@/lib/scoring'
-import { scoreClassName } from '@/lib/score-style'
+import { Leaderboard } from './leaderboard'
+import { RoundsList } from './rounds-list'
+
+type View = 'board' | 'rounds'
 
 interface ScoreboardProps {
   players: Player[]
@@ -24,6 +27,38 @@ interface ScoreboardProps {
   onAddRound: () => void
   onEditRound: (round: Round) => void
   onReset: () => void
+}
+
+function Tab({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean
+  onClick: () => void
+  children: ReactNode
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={cn(
+        'relative flex min-h-11 items-center gap-1.5 pb-2 text-sm font-semibold transition-colors',
+        active
+          ? 'text-foreground'
+          : 'text-muted-foreground hover:text-foreground',
+      )}
+    >
+      {children}
+      {active ? (
+        <span
+          aria-hidden
+          className="absolute inset-x-0 -bottom-px h-0.5 bg-primary"
+        />
+      ) : null}
+    </button>
+  )
 }
 
 function Scoreboard({
@@ -35,45 +70,30 @@ function Scoreboard({
   onReset,
 }: ScoreboardProps) {
   const [resetOpen, setResetOpen] = useState(false)
+  const [view, setView] = useState<View>('board')
 
   return (
-    <main className="mx-auto flex min-h-svh w-full max-w-3xl flex-col px-4 pt-6 pb-32">
-      <header className="flex items-start justify-between gap-3 pb-5">
-        <div className="flex items-center gap-3">
-          <img
-            src="/pwa-192x192.png"
-            alt=""
-            className="size-10 rounded-xl"
-            width={40}
-            height={40}
-          />
-          <div>
-            <h1 className="font-heading text-lg font-semibold tracking-[0.25em] uppercase">
-              MaalTrack
-            </h1>
-            <p className="text-xs text-muted-foreground">
-              {players.length} players · {rounds.length}{' '}
-              {rounds.length === 1 ? 'round' : 'rounds'}
-            </p>
-          </div>
-        </div>
+    <main className="mx-auto flex min-h-svh w-full max-w-xl flex-col pt-6 pb-[calc(6rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
+      <header className="flex items-center justify-between gap-3">
+        <h1 className="font-serif text-2xl font-semibold tracking-tight">
+          MaalTrack
+        </h1>
 
         <AlertDialog open={resetOpen} onOpenChange={setResetOpen}>
-          <AlertDialogTrigger
-            render={<Button variant="outline" size="sm" />}
-          >
-            New game
+          <AlertDialogTrigger render={<Button variant="ghost" size="sm" />}>
+            Reset
           </AlertDialogTrigger>
           <AlertDialogContent size="sm">
             <AlertDialogHeader>
               <AlertDialogTitle>Start a new game?</AlertDialogTitle>
               <AlertDialogDescription>
-                This clears every player and round. It cannot be undone.
+                Clears all players and rounds.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
+                variant="destructive"
                 onClick={() => {
                   onReset()
                   setResetOpen(false)
@@ -86,95 +106,35 @@ function Scoreboard({
         </AlertDialog>
       </header>
 
-      <div className="overflow-x-auto overscroll-x-contain border">
-        <table className="w-full border-collapse text-sm">
-          <thead>
-            <tr className="border-b">
-              <th className="sticky left-0 z-20 min-w-[88px] bg-background px-3 py-3 text-left align-bottom">
-                <span className="text-[0.625rem] font-semibold tracking-widest text-muted-foreground uppercase">
-                  Round
-                </span>
-              </th>
-              {players.map((player) => {
-                const total = totals[player.id] ?? 0
-                return (
-                  <th
-                    key={player.id}
-                    className="min-w-[84px] px-2 py-3 text-center align-top"
-                  >
-                    <span className="block max-w-[96px] truncate text-xs font-semibold">
-                      {player.name}
-                    </span>
-                    <span
-                      className={cn(
-                        'mt-1 block font-heading text-sm font-semibold tabular-nums',
-                        scoreClassName(total),
-                      )}
-                    >
-                      {formatScore(total)}
-                    </span>
-                  </th>
-                )
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {rounds.map((round, index) => (
-              <tr key={round.id} className="border-b last:border-b-0">
-                <th className="sticky left-0 z-10 bg-background px-3 py-2 text-left">
-                  <button
-                    type="button"
-                    onClick={() => onEditRound(round)}
-                    className="text-xs font-semibold tracking-widest uppercase underline-offset-4 hover:underline"
-                  >
-                    <span className="block">Round {index + 1}</span>
-                    {round.manual && (
-                      <span className="mt-0.5 block text-[0.5rem] text-amber-700">
-                        Manual
-                      </span>
-                    )}
-                  </button>
-                </th>
-                {players.map((player) => {
-                  const score = round.scores?.[player.id] ?? 0
-                  return (
-                    <td
-                      key={player.id}
-                      className={cn(
-                        'px-2 py-2 text-center tabular-nums',
-                        scoreClassName(score),
-                      )}
-                    >
-                      {formatScore(score)}
-                    </td>
-                  )
-                })}
-              </tr>
-            ))}
+      <nav aria-label="Views" className="mt-6 flex gap-6 border-b border-border">
+        <Tab active={view === 'board'} onClick={() => setView('board')}>
+          Board
+        </Tab>
+        <Tab active={view === 'rounds'} onClick={() => setView('rounds')}>
+          Rounds
+          <span className="text-muted-foreground tabular-nums">
+            {rounds.length}
+          </span>
+        </Tab>
+      </nav>
 
-            {rounds.length === 0 && (
-              <tr>
-                <td
-                  colSpan={players.length + 1}
-                  className="px-4 py-10 text-center text-sm text-muted-foreground"
-                >
-                  No rounds yet. Add the first one below.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+      <section className="mt-4 flex-1">
+        {view === 'board' ? (
+          <Leaderboard players={players} totals={totals} rounds={rounds} />
+        ) : (
+          <RoundsList
+            players={players}
+            rounds={rounds}
+            onEditRound={onEditRound}
+          />
+        )}
+      </section>
 
-      <p className="mt-3 text-xs text-muted-foreground">
-        Tap a round to edit it or override its final points. Every row totals 0.
-      </p>
-
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur">
-        <div className="mx-auto max-w-3xl">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur">
+        <div className="mx-auto w-full max-w-xl pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
           <Button size="lg" className="w-full" onClick={onAddRound}>
             <Plus data-icon="inline-start" />
-            Add round
+            Log round
           </Button>
         </div>
       </div>

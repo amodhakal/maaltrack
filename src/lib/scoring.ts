@@ -124,5 +124,7 @@ export function calculateTotals(
 }
 
 export function formatScore(score: number): string {
-  return score > 0 ? `+${score}` : String(score)
+  if (score > 0) return `+${score}`
+  if (score < 0) return `−${Math.abs(score)}`
+  return '0'
 }

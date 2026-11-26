@@ -18,15 +18,14 @@ export default defineConfig({
         id: '/',
         name: 'MaalTrack',
         short_name: 'MaalTrack',
-        description:
-          'Track cards, points, and everything that matters — online or offline.',
+        description: 'Marriage scorekeeper.',
         start_url: '/',
         scope: '/',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
-        categories: ['productivity', 'utilities'],
+        background_color: '#12100e',
+        theme_color: '#12100e',
+        categories: ['games', 'utilities'],
         icons: [
           {
             src: 'pwa-64x64.png',

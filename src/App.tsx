@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RoundDialog } from '@/components/game/round-dialog'
+import { RoundSheet } from '@/components/game/round-sheet'
 import { Scoreboard } from '@/components/game/scoreboard'
 import { SetupScreen } from '@/components/game/setup-screen'
 import { Toaster } from '@/components/ui/sonner'
@@ -10,6 +10,13 @@ function App() {
   const game = useGame()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingRound, setEditingRound] = useState<Round | null>(null)
+
+  const roundNumber = editingRound
+    ? Math.max(
+        1,
+        game.rounds.findIndex((round) => round.id === editingRound.id) + 1,
+      )
+    : game.rounds.length + 1
 
   function openAddRound() {
     setEditingRound(null)
@@ -47,12 +54,13 @@ function App() {
         onReset={game.resetGame}
       />
 
-      <RoundDialog
+      <RoundSheet
         key={dialogOpen ? (editingRound?.id ?? 'new') : 'closed'}
         open={dialogOpen}
         onOpenChange={setDialogOpen}
         players={game.players}
         round={editingRound}
+        roundNumber={roundNumber}
         onSave={(winnerId, entries) => {
           if (editingRound) {
             game.updateRound(editingRound.id, winnerId, entries)
