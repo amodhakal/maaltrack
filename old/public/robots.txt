@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://maaltrack.vercel.app/sitemap.xml
