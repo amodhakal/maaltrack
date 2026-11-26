@@ -54,8 +54,8 @@ function SetupScreen({
 
       <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
         Add 2–12 players. Each round, pick a winner and mark seen, unseen, or
-        doubles. Points auto-settle so every round totals zero. Works offline as
-        a PWA.
+        doubles. Points auto-settle so every round totals zero. Install as a
+        PWA for the best experience, or play right in your browser.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 flex gap-2">
