@@ -2,7 +2,7 @@
   "id": "/",
   "name": "MaalTrack — Marriage Scorekeeper",
   "short_name": "MaalTrack",
-  "description": "Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline.",
+  "description": "Marriage card game scorekeeper for 2–12 players. Install MaalTrack as a PWA for the best experience, or play instantly in your browser. Seen/unseen/doubles rounds, auto-settled totals, and offline support.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

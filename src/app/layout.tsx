@@ -5,7 +5,7 @@ import "./globals.css";
 const siteUrl = "https://maaltrack.vercel.app";
 const title = "MaalTrack — Marriage Card Game Scorekeeper";
 const description =
-  "Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline.";
+  "Free Marriage card game scorekeeper for 2–12 players. Install MaalTrack as a PWA for the best experience, or play instantly in your browser. Seen/unseen/doubles rounds, auto-settled totals, and offline support.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -44,7 +44,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og-image.png"],
+    images: [
+      {
+        url: "/og-image.png",
+        alt: "MaalTrack — Marriage Card Game Scorekeeper",
+      },
+    ],
   },
   icons: {
     icon: [
@@ -80,17 +85,20 @@ const jsonLd = {
       description,
       applicationCategory: "GameApplication",
       operatingSystem: "Any",
+      browserRequirements: "Requires a modern web browser with JavaScript enabled",
+      image: `${siteUrl}/og-image.png`,
       offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
       },
       featureList: [
+        "Installable PWA",
+        "Runs in your browser",
+        "Offline support",
         "2-12 players",
         "Seen/Unseen/Doubles rounds",
         "Auto settlement",
-        "Offline support",
-        "PWA installable",
       ],
       publisher: {
         "@type": "Organization",
@@ -120,6 +128,27 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <noscript>
+          <div
+            style={{
+              padding: "2rem",
+              textAlign: "center",
+              fontFamily: "system-ui, sans-serif",
+              maxWidth: "32rem",
+              margin: "0 auto",
+            }}
+          >
+            <h1 style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>
+              MaalTrack — Marriage Card Game Scorekeeper
+            </h1>
+            <p style={{ lineHeight: 1.6 }}>
+              MaalTrack is a free scorekeeper for the Nepali card game Marriage.
+              Install it as a PWA for the best experience, or play in your
+              browser with JavaScript enabled.{" "}
+              <a href="https://github.com/amodhakal/maaltrack">View on GitHub</a>.
+            </p>
+          </div>
+        </noscript>
       </body>
     </html>
   );

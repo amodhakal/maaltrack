@@ -1,25 +1,26 @@
 import Link from "next/link";
+import { ResumeCta } from "@/components/home/resume-cta";
 
 const features = [
+  {
+    title: "Installable PWA",
+    description:
+      "Install MaalTrack for the best experience, with quick access from your home screen and offline support.",
+  },
+  {
+    title: "Playable in your browser",
+    description:
+      "Prefer not to install? MaalTrack works fully in a modern browser, so you can start scoring right away.",
+  },
   {
     title: "2–12 players",
     description:
       "Track a full Marriage table, from a quick two-player game to a big family round.",
   },
   {
-    title: "Seen, unseen, doubles",
-    description:
-      "Log each round the way Marriage is actually played, including doubles and manual overrides when needed.",
-  },
-  {
     title: "Auto settlement",
     description:
-      "MaalTrack calculates the row so every round totals zero, keeping the ledger balanced.",
-  },
-  {
-    title: "Works offline",
-    description:
-      "Install it as a PWA and keep scoring even when the connection drops.",
+      "Log seen, unseen, and doubles rounds. MaalTrack calculates the row so every round totals zero.",
   },
 ];
 
@@ -42,24 +43,29 @@ const steps = [
 
 const faqs = [
   {
-    question: "What is MaalTrack?",
-    answer:
-      "MaalTrack is a free browser-based scorekeeper for Marriage, the Nepali card game. It helps you track rounds, players, and settled scores without paper.",
-  },
-  {
     question: "Do I need to install an app?",
     answer:
-      "No. You can use MaalTrack directly in your browser. If you want quick access, you can also install it as a PWA.",
+      "No. MaalTrack works fully in your browser. If you want the best experience, you can install it as a PWA for quick access and offline support.",
   },
   {
     question: "Does it work offline?",
     answer:
-      "Yes. Once loaded, MaalTrack can work offline and keeps your game saved on your device.",
+      "Yes. After your first visit, MaalTrack can work offline and keeps your game saved on your device.",
+  },
+  {
+    question: "What is Marriage scoring?",
+    answer:
+      "Marriage is a Nepali card game where each round is settled based on seen/unseen status, doubles, and maal points. MaalTrack calculates each player's score so every round totals zero.",
   },
   {
     question: "How many players can I track?",
     answer:
-      "MaalTrack supports 2 to 12 players, with seen/unseen/doubles rounds and automatic settlement.",
+      "MaalTrack supports 2 to 12 players, with seen/unseen/doubles rounds, manual overrides, and automatic settlement.",
+  },
+  {
+    question: "Is data stored locally?",
+    answer:
+      "Yes. Your game data is stored locally in your browser on your device. No account is required to keep score.",
   },
 ];
 
@@ -80,30 +86,17 @@ export default function HomePage() {
   return (
     <main className="mx-auto w-full max-w-5xl px-4 pb-16 pt-[calc(2rem+env(safe-area-inset-top))] sm:px-6 lg:px-8">
       <header className="border-b border-border pb-10">
-        <p className="label-caps text-primary">Browser-first scorekeeper</p>
+        <p className="label-caps text-primary">PWA scorekeeper for Marriage</p>
         <h1 className="mt-4 max-w-3xl font-serif text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
           Track Marriage card game scores without the spreadsheet.
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          MaalTrack is a free online scorekeeper for Marriage (Nepali card game).
-          Add 2–12 players, log seen/unseen/doubles rounds, and let every row
-          settle to zero automatically. No install required — works right in your
-          browser, even offline.
+          MaalTrack is a free scorekeeper for Marriage, the Nepali card game.
+          Install it as a PWA for the best experience, or play instantly in your
+          browser. Track 2–12 players, log seen/unseen/doubles rounds, and let
+          every row settle to zero automatically.
         </p>
-        <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Link
-            href="/play"
-            className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            Play now
-          </Link>
-          <a
-            href="#how-it-works"
-            className="inline-flex h-12 items-center justify-center rounded-md border border-border px-6 text-sm font-semibold text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            How it works
-          </a>
-        </div>
+        <ResumeCta />
         <p className="mt-4 text-sm text-muted-foreground">
           Free to use. Your game data stays on your device.
         </p>
@@ -194,13 +187,13 @@ export default function HomePage() {
         </h2>
         <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
           <p>
-            MaalTrack runs in the browser and stores game data locally on your
-            device. There is no account required to keep score.
+            MaalTrack is built to work as an installable PWA and as a web app.
+            Use whichever fits your table: install it for quick access, or open
+            it in your browser when you want to play instantly.
           </p>
           <p>
-            Built for the Nepali card game Marriage, with support for the
-            scoring details that matter: seen, unseen, doubles, manual
-            overrides, and auto-settled totals.
+            Game data is stored locally in your browser on your device. There is
+            no account required to keep score.
           </p>
         </div>
         <div className="mt-8">
@@ -214,15 +207,27 @@ export default function HomePage() {
       </section>
 
       <footer className="mt-16 border-t border-border pt-6 text-sm text-muted-foreground">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p>MaalTrack — Marriage card game scorekeeper.</p>
-          <a
-            href="https://github.com/amodhakal/maaltrack"
-            className="underline underline-offset-4 hover:text-foreground"
-          >
-            View on GitHub
-          </a>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-2">
+            <a
+              href="https://github.com/amodhakal/maaltrack"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://github.com/amodhakal/maaltrack/issues/new"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              Report issue
+            </a>
+          </nav>
         </div>
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+          Privacy note: MaalTrack stores game data locally in your browser. No
+          account is required.
+        </p>
       </footer>
 
       <script
