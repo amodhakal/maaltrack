@@ -39,13 +39,24 @@ function SetupScreen({
   return (
     <main className="mx-auto flex min-h-svh w-full max-w-xl flex-col pt-[calc(1.5rem+env(safe-area-inset-top))] pb-[calc(6rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
       <header className="flex items-baseline justify-between gap-3">
-        <h1 className="font-serif text-2xl font-semibold tracking-tight">
-          MaalTrack
-        </h1>
+        <div>
+          <h1 className="font-serif text-2xl font-semibold tracking-tight">
+            MaalTrack
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Marriage card game scorekeeper
+          </p>
+        </div>
         <span className="text-sm text-muted-foreground tabular-nums">
           {players.length}/{MAX_PLAYERS}
         </span>
       </header>
+
+      <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+        Add 2–12 players. Each round, pick a winner and mark seen, unseen, or
+        doubles. Points auto-settle so every round totals zero. Works offline as
+        a PWA.
+      </p>
 
       <form onSubmit={handleSubmit} className="mt-8 flex gap-2">
         <Input

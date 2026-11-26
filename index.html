@@ -12,18 +12,91 @@
     />
     <meta
       name="description"
-      content="Marriage scorekeeper."
+      content="Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline."
     />
     <meta name="theme-color" content="#12100e" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="MaalTrack" />
+    <meta name="application-name" content="MaalTrack" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://maaltrack.vercel.app/" />
     <meta name="google-site-verification" content="J1qFiqJ5JoSaQWX6dqMVi2bp3ZEqtUsIcJykD_-recw" />
-    <title>MaalTrack — Marriage scorekeeper</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://maaltrack.vercel.app/" />
+    <meta property="og:title" content="MaalTrack — Marriage Card Game Scorekeeper" />
+    <meta property="og:description" content="Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline." />
+    <meta property="og:image" content="https://maaltrack.vercel.app/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="MaalTrack" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MaalTrack — Marriage Card Game Scorekeeper" />
+    <meta name="twitter:description" content="Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline." />
+    <meta name="twitter:image" content="https://maaltrack.vercel.app/og-image.png" />
+
+    <!-- Font preloads (Latin subsets only) -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/fraunces-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/fraunces-latin-ext-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/instrument-sans-latin-wght-normal.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/instrument-sans-latin-ext-wght-normal.woff2" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "MaalTrack",
+          "url": "https://maaltrack.vercel.app/",
+          "description": "Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline.",
+          "applicationCategory": "GameApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "2-12 players",
+            "Seen/Unseen/Doubles rounds",
+            "Auto settlement",
+            "Offline support",
+            "PWA installable"
+          ],
+          "publisher": {
+            "@type": "Organization",
+            "name": "MaalTrack",
+            "url": "https://github.com/amodhakal/maaltrack"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "name": "MaalTrack",
+          "url": "https://maaltrack.vercel.app/"
+        }
+      ]
+    }
+    </script>
+
+    <title>MaalTrack — Marriage Card Game Scorekeeper</title>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui; max-width: 480px; margin: 0 auto;">
+        <h1 style="font-size: 1.75rem; margin-bottom: 1rem;">MaalTrack — Marriage Card Game Scorekeeper</h1>
+        <p style="line-height: 1.6; color: #333;">
+          Free online scorekeeper for the Nepali card game Marriage. Track seen/unseen/doubles rounds with auto settlement.
+          <a href="https://github.com/amodhakal/maaltrack" style="color: #e9a63c;">View on GitHub</a>.
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

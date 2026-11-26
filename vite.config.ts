@@ -16,16 +16,16 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'favicon.svg', 'apple-touch-icon-180x180.png'],
       manifest: {
         id: '/',
-        name: 'MaalTrack',
+        name: 'MaalTrack — Marriage Scorekeeper',
         short_name: 'MaalTrack',
-        description: 'Marriage scorekeeper.',
+        description: 'Free online scorekeeper for Marriage (Nepali card game). 2–12 players, seen/unseen/doubles rounds, auto-settled so every row totals 0. Works offline.',
         start_url: '/',
         scope: '/',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#12100e',
         theme_color: '#12100e',
-        categories: ['games', 'utilities'],
+        categories: ['games', 'entertainment'],
         icons: [
           {
             src: 'pwa-64x64.png',
